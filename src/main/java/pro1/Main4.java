@@ -1,5 +1,10 @@
 package pro1;
 
+import com.google.gson.Gson;
+import pro1.apiDataModel.TeachersList;
+
+import java.util.Comparator;
+
 public class Main4 {
 
     public static void main(String[] args) {
@@ -8,6 +13,14 @@ public class Main4 {
 
     public static void printShortestEmails(String department, int count)
     {
-        // TODO 4.1: Vypiš do konzole "count" nejkratších učitelských emailových adres
+        String teachersJson = Api.getTeachersByDepartment(department);
+        TeachersList teachers = new Gson().fromJson(teachersJson, TeachersList.class);
+        
+        teachers.items.stream()
+                .map(teacher -> teacher.email)
+                .filter(email -> email != null && !email.isEmpty())
+                .sorted(Comparator.comparing(String::length))
+                .limit(count)
+                .forEach(System.out::println);
     }
 }

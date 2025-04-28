@@ -9,7 +9,7 @@ public class Main2Test
     {
         // TODO 2.2: Oprav test
         assertEquals(
-                0,
+                32,
                 Main2.maxPersonsCount("KIKM",2024)
         );
     }

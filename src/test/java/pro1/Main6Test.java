@@ -11,7 +11,7 @@ public class Main6Test
     {
         // TODO 6.2: Oprav test
         assertEquals(
-                123,
+                126493,
                 Main6.idOfBestTeacher("KIKM",2024)
         );
     }
